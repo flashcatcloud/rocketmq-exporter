@@ -17,7 +17,7 @@
 
     <properties>
         <rocketmq.version>4.9.4</rocketmq.version>
-        <docker.image.prefix>docker.io</docker.image.prefix>
+        <docker.image.prefix>docker.io/flashcatcloud</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -125,13 +125,13 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}:${rocketmq.version}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
+                            <include>${project.build.finalName}-exec.jar</include>
                         </resource>
                     </resources>
                 </configuration>
